@@ -7,7 +7,11 @@ import datetime
 
 
 default = "No Value Present"
-
+script = os.environ.get('SCRIPT_NAME', __name__)
+month = datetime.datetime.now().strftime('%B')
+year = datetime.datetime.now().year
+date = datetime.datetime.now().date
+client_ip = os.environ.get('REMOTE_ADDR', 'eeee')
 
 print("Content-Type: text/html")
 print("")
@@ -23,10 +27,10 @@ body = """<html>
 </body>
 </html>""".format(
     software=os.environ.get('SERVER_SOFTWARE', default),
-    script='aaaa',
-    month='bbbb',
-    date='cccc',
-    year='dddd',
-    client_ip='eeee'
+    script=script,
+    month=month,
+    date=date,
+    year=year,
+    client_ip=client_ip
 )
 print(body)
